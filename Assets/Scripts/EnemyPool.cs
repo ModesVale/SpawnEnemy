@@ -13,22 +13,12 @@ public class EnemyPool : MonoBehaviour
     {
         _pool = new ObjectPool<Enemy>(
             createFunc: () => Instantiate(_enemy),
-            actionOnGet: (instance) => ActionOnGet(instance),
-            actionOnRelease: ActionOnRelese,
+            actionOnGet: null,
+            actionOnRelease: null,
             actionOnDestroy: (instance) => Destroy(instance),
             collectionCheck: true,
             defaultCapacity: _poolCapacity,
             maxSize: _poolMaxSize);
-    }
-
-    private void ActionOnGet(Enemy instance)
-    {
-
-    }
-
-    private void ActionOnRelese(Enemy instance)
-    {
-
     }
 
     public Enemy GetEnemy()

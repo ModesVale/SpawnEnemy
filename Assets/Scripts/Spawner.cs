@@ -5,25 +5,22 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Transform _spawnCenter;
 
     private EnemyPool _pool;
+    private Vector3 _spawnPoint;
 
     private void Awake()
     {
+        _spawnPoint = _spawnCenter.position;
+
         if (_pool == null)
         {
             _pool = FindObjectOfType<EnemyPool>();
         }
     }
 
-    private void Start()
-    {
-        SpawnEnemy();
-    }
-
     public void SpawnEnemy()
     {
-        Vector3 spawnPoint = _spawnCenter.position;
         Enemy enemy = _pool.GetEnemy();
-        enemy.transform.position = spawnPoint;
+        enemy.transform.position = _spawnPoint;
         enemy.transform.rotation = Quaternion.Euler(0, GenerateRandomAngular(), 0);
     }
 

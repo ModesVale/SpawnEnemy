@@ -119,9 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8870ebecbabc1d439a9927ed869ccf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemy: {fileID: -2425873481787458209, guid: 7b988fc62be1af44d87efa6de7d6a499, type: 3}
+  _poolCapacity: 10
   _spawnCenter: {fileID: 324219634233152828}
-  _pool: {fileID: 3738410743351906597, guid: 9f106a9801645ff419024eb8979936e8, type: 3}
-  _pushPower: 2
 --- !u!1 &8329734893122662678
 GameObject:
   m_ObjectHideFlags: 0

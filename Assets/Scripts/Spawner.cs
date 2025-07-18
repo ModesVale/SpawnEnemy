@@ -1,37 +1,47 @@
- using UnityEngine;
+using UnityEngine;
+using UnityEngine.Pool;
 
 public class Spawner : MonoBehaviour
 {
+    [SerializeField] private Enemy _enemy;
+    [SerializeField] private int _poolCapacity = 10;
     [SerializeField] private Transform _spawnCenter;
 
-    private EnemyPool _pool;
+    private ObjectPool<Enemy> _pool;
     private Vector3 _spawnPoint;
 
     private void Awake()
     {
         _spawnPoint = _spawnCenter.position;
 
-        if (_pool == null)
-        {
-            _pool = FindObjectOfType<EnemyPool>();
-        }
+        _pool = new ObjectPool<Enemy>(
+           createFunc: () => Instantiate(_enemy),
+           actionOnGet: (instance) => ActionOnGet(instance),
+           actionOnRelease: null,
+           actionOnDestroy: (instance) => Destroy(instance),
+           collectionCheck: true,
+           defaultCapacity: _poolCapacity);
+    }
+
+    public void ActionOnGet(Enemy instance)
+    {
+        instance.transform.position = _spawnPoint;
+        instance.Move(GenerateRandomDirection());
+    }
+
+    private Vector3 GenerateRandomDirection()
+    {
+        float valueMin = -1f;
+        float valueMax = 1f;
+
+        Vector3 direction = new Vector3(Random.Range(valueMin, valueMax), 0f, Random.Range(valueMin, valueMax)).normalized;
+
+        return direction;
     }
 
     public void SpawnEnemy()
     {
-        Enemy enemy = _pool.GetEnemy();
-        enemy.transform.position = _spawnPoint;
-        enemy.transform.rotation = Quaternion.Euler(0, GenerateRandomAngular(), 0);
+        _pool.Get();
     }
-
-    private float GenerateRandomAngular()
-    {
-        float angularMin = 0.0f;
-        float angularMax = 360.0f;
-        float angular = Random.Range(angularMin, angularMax);
-
-        return angular;
-    }
-
 
 }

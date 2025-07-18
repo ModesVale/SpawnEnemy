@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private int _pushPower = 10;
+    [SerializeField] private int _moveSpeed = 10;
 
     private Rigidbody _rigidbody;
+    private Vector3 _direction;
 
     private void Awake()
     {
@@ -13,12 +14,12 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move(_pushPower);
+        _rigidbody.velocity = _direction * _moveSpeed;
     }
 
-    public void Move(int pushPower)
+    public void Move(Vector3 direction)
     {
-        
-        _rigidbody.AddForce(transform.forward * pushPower, ForceMode.Force);
+        _direction = direction;
+        transform.rotation = Quaternion.LookRotation(_direction);      
     }
 }

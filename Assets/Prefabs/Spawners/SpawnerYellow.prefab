@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 235554731257581992}
   - component: {fileID: -4474556111802748824}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: SpawnerYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e5fed8563d2544b4db39d351e05830ac, type: 2}
+  - {fileID: 2100000, guid: f9946a23fa22d804c94831e89a26b838, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8870ebecbabc1d439a9927ed869ccf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemy: {fileID: -2425873481787458209, guid: 7b988fc62be1af44d87efa6de7d6a499, type: 3}
+  _enemy: {fileID: -2425873481787458209, guid: e8c7e8af032925c44bdfdc37b09013ac, type: 3}
   _poolCapacity: 10
   _spawnCenter: {fileID: 324219634233152828}
 --- !u!1 &8329734893122662678

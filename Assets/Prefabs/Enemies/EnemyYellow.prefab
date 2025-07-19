@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: -2425873481787458209}
   - component: {fileID: -2651960198434349479}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -170,7 +170,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1a31bc11ea691fd4cbcf49bc73bccf5c, type: 2}
+  - {fileID: 2100000, guid: f9946a23fa22d804c94831e89a26b838, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cecfc30edd9e9e45bd12b4597e76d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pushPower: 10
+  _moveSpeed: 3
 --- !u!54 &-2651960198434349479
 Rigidbody:
   m_ObjectHideFlags: 0

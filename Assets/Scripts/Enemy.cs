@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 
     private Rigidbody _rigidbody;
     private Vector3 _direction;
+    private Transform _target;
 
     private void Awake()
     {
@@ -14,12 +15,15 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_target == null) return;
+
+        _direction = (_target.position - transform.position).normalized;
+        transform.rotation = Quaternion.LookRotation(_direction);
         _rigidbody.velocity = _direction * _moveSpeed;
     }
 
-    public void Move(Vector3 direction)
+    public void SetTraget(Transform target)
     {
-        _direction = direction;
-        transform.rotation = Quaternion.LookRotation(_direction);      
+        _target = target;      
     }
 }

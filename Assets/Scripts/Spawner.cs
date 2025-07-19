@@ -4,6 +4,7 @@ using UnityEngine.Pool;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private Enemy _enemy;
+    [SerializeField] private Transform _mark;
     [SerializeField] private int _poolCapacity = 10;
     [SerializeField] private Transform _spawnCenter;
 
@@ -26,17 +27,7 @@ public class Spawner : MonoBehaviour
     public void ActionOnGet(Enemy instance)
     {
         instance.transform.position = _spawnPoint;
-        instance.Move(GenerateRandomDirection());
-    }
-
-    private Vector3 GenerateRandomDirection()
-    {
-        float valueMin = -1f;
-        float valueMax = 1f;
-
-        Vector3 direction = new Vector3(Random.Range(valueMin, valueMax), 0f, Random.Range(valueMin, valueMax)).normalized;
-
-        return direction;
+        instance.SetTraget(_mark);
     }
 
     public void SpawnEnemy()
